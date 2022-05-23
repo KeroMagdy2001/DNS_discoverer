@@ -1,2 +1,2 @@
 # DNS_discoverer
-It helps the researcher to find vulerabilty of DNS Zone Transfer
+It helps the researcher to find vulnerability of DNS Zone Transfer
