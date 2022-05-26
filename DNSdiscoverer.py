@@ -62,7 +62,7 @@ if platform == "linux" or platform == "linux2" or platform == "win32" or platfor
 
     try:
         print('%s\n\nversion:1.1.2\n\n%s' % (Y,W))
-        print('%s\n\nJust for linux\n\n%s' % (Y,W))
+        
         def scan():
             results =  parse_args()
             domain  = results.domain
