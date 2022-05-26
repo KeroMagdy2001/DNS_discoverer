@@ -1,0 +1,18 @@
+#Modules 
+
+requests
+
+to install this module use this command on any OS : pip install requests
+
+argparse
+
+to install this module use this command on any OS : pip install argparse
+
+
+
+
+#Tools
+
+dig
+
+dnsenum
