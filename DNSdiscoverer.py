@@ -1,6 +1,6 @@
 #Modules
 
-import socket,os,sys,argparse
+import socket,os,sys,argparse,requests
 
 
 from sys import platform
@@ -14,15 +14,17 @@ B = '\033[94m'  # blue
 R = '\033[91m'  # red
 W = '\033[0m'   # white
 
-#start check if platfom is linux
 
-if platform == "linux" or platform == "linux2":
+
+#start check if platfom is linux and other
+
+if platform == "linux" or platform == "linux2" or platform == "win32" or platform == "darwin":
 
     def banner():
         #type of font is: big
         print("""%s
 
-                    _____  _   _  _____     _ _                                      
+                     _____  _   _  _____     _ _                                      
                     |  __ \| \ | |/ ____|   | (_)                                     
                     | |  | |  \| | (___   __| |_ ___  ___ _____   _____ _ __ ___ _ __ 
                     | |  | | . ` |\___ \ / _` | / __|/ __/ _ \ \ / / _ \ '__/ _ \ '__|
@@ -59,14 +61,25 @@ if platform == "linux" or platform == "linux2":
 
 
     try:
-        print('%s\n\nversion:0.1.0\n\n%s' % (Y,W))
+        print('%s\n\nversion:1.1.2\n\n%s' % (Y,W))
         print('%s\n\nJust for linux\n\n%s' % (Y,W))
         def scan():
             results =  parse_args()
             domain  = results.domain
             server  = results.server
 
+            #add "https://" for domain
 
+            add = "https://" + domain
+
+            if requests.post(add).status_code == 200:
+                print("Valid Domain\n")
+                print(add)
+            else:
+                print("Invalid Domain\n")
+                print(add)
+                exit()
+                
             #public DNS
 
             def public_dns():
@@ -119,4 +132,5 @@ if platform == "linux" or platform == "linux2":
     else:
         print('\n%sScan Done!%s' % (Y,W))
 
-else:print('\n%sSorry, platform is not linux (▰˘︹˘▰)' % (R))
+#else:print('\n%sSorry, platform is not linux (▰˘︹˘▰)' % (R))
+else:print("You must install dig and dnsenum both tools")
